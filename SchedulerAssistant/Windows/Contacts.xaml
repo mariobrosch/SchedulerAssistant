@@ -112,8 +112,7 @@
                 <TextBlock Grid.Column="1" Text="E-mailadres" />
                 <TextBox
                     x:Name="txtEmailaddress"
-                    Grid.Column="2"
-                    VerticalAlignment="Center" />
+                    Grid.Column="2" />
             </Grid>
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>

@@ -79,9 +79,8 @@ namespace SchedulerAssistant.Windows
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            ContactType myType;
             var selectedType = lbType.SelectedItem;
-            Enum.TryParse(selectedType.ToString(), out myType);
+            _ = Enum.TryParse(selectedType.ToString(), out ContactType myType);
 
             if (txtId.Text != "Nieuw")
             {
@@ -132,7 +131,7 @@ namespace SchedulerAssistant.Windows
             ChkActiveContact.IsChecked = contact.IsEnabled;
             chkRemovedContact.IsChecked = contact.IsRemoved;
             txtEmailaddress.Text = contact.EmailAddress;
-            lbType.SelectedItem = contact.Type;
+            lbType.SelectedItem = contact.Type.ToString();
             BtnRemove.Visibility = Visibility.Visible;
         }
 
