@@ -1,17 +1,7 @@
-﻿using System;
+﻿using SchedulerAssistant.Data.Helpers;
+using SchedulerAssistant.Helpers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SchedulerAssistant
 {
@@ -22,7 +12,27 @@ namespace SchedulerAssistant
     {
         public MainWindow()
         {
+            _ = new Startup();
+            Startup.Perform();
+
+            SettingsHelper.CreateDefaultSettings();
             InitializeComponent();
+        }
+
+        private void SettingsToolStripMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Windows.Settings settingsForm = new();
+            _ = settingsForm.ShowDialog();
+            Show();
+        }
+
+        private void BtnContacts_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Windows.Contacts contactForm = new();
+            _ = contactForm.ShowDialog();
+            Show();
         }
     }
 }

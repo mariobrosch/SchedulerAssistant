@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SchedulerAssistant.Data.Enums;
 
 namespace SchedulerAssistant.Data.Models
 {
@@ -9,6 +10,7 @@ namespace SchedulerAssistant.Data.Models
         public string? Abbreviation { get; set; }
         public string? EmailAddress { get; set; }
         public string? Enabled { get; set; }
+        public ContactType Type { get; set; }
         [JsonIgnore]
         public bool IsEnabled
         {
