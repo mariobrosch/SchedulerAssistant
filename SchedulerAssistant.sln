@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulerAssistant", "SchedulerAssistant\SchedulerAssistant.csproj", "{CC7B7E37-DB8D-4EBC-9071-679CD27A290B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulerAssistant", "SchedulerAssistant\SchedulerAssistant.csproj", "{CC7B7E37-DB8D-4EBC-9071-679CD27A290B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulerAssistant.Data", "SchedulerAssistant.Data\SchedulerAssistant.Data.csproj", "{DCE7FE64-2EFA-4CB0-9CD9-0573ADC4E5E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CC7B7E37-DB8D-4EBC-9071-679CD27A290B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC7B7E37-DB8D-4EBC-9071-679CD27A290B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC7B7E37-DB8D-4EBC-9071-679CD27A290B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCE7FE64-2EFA-4CB0-9CD9-0573ADC4E5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE7FE64-2EFA-4CB0-9CD9-0573ADC4E5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE7FE64-2EFA-4CB0-9CD9-0573ADC4E5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE7FE64-2EFA-4CB0-9CD9-0573ADC4E5E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
