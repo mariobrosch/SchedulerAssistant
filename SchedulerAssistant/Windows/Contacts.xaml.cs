@@ -25,7 +25,7 @@ namespace SchedulerAssistant.Windows
 
         private void LoadBoxes()
         {
-            contacts = ContactData.Get(ChkShowRemoved.IsChecked.GetValueOrDefault())?.OrderBy(p => p.Name).ToList() ?? new List<Contact>();
+            contacts = ContactData.Get(ChkShowRemoved.IsChecked.GetValueOrDefault())?.OrderBy(p => p.DisplayValue).ToList() ?? new List<Contact>();
             if (!ChkActiveContact.IsChecked.GetValueOrDefault())
             {
                 contacts = contacts.Where(t => t.IsEnabled).ToList();
@@ -38,7 +38,7 @@ namespace SchedulerAssistant.Windows
             }
 
             LbContacts.ItemsSource = contacts;
-            LbContacts.DisplayMemberPath = "Name";
+            LbContacts.DisplayMemberPath = "DisplayValue";
 
             if (contacts.Count == 0)
             {
@@ -61,6 +61,7 @@ namespace SchedulerAssistant.Windows
             txtName.Text = "";
             txtAbbreviation.Text = "";
             txtId.Text = "Nieuw";
+            txtLastName.Text = "";
             txtEmailaddress.Text = "";
             ChkActiveContact.IsChecked = true;
             BtnRemove.Visibility = Visibility.Hidden;
@@ -91,6 +92,7 @@ namespace SchedulerAssistant.Windows
                 }
                 contact.IsEnabled = ChkActiveContact.IsChecked.GetValueOrDefault();
                 contact.Name = txtName.Text;
+                contact.Lastname = txtLastName.Text;
                 contact.Type = myType;
                 contact.EmailAddress = txtEmailaddress.Text;
                 contact.Abbreviation = txtAbbreviation.Text;
@@ -104,6 +106,7 @@ namespace SchedulerAssistant.Windows
                 {
                     IsEnabled = ChkActiveContact.IsChecked.GetValueOrDefault(),
                     Name = txtName.Text,
+                    Lastname = txtLastName.Text,
                     Type = myType,
                     EmailAddress = txtEmailaddress.Text,
                     Abbreviation = txtAbbreviation.Text,
@@ -127,6 +130,7 @@ namespace SchedulerAssistant.Windows
         {
             txtId.Text = contact.Id.ToString();
             txtName.Text = contact.Name;
+            txtLastName.Text = contact.Lastname;
             txtAbbreviation.Text = contact.Abbreviation;
             ChkActiveContact.IsChecked = contact.IsEnabled;
             chkRemovedContact.IsChecked = contact.IsRemoved;
