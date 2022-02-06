@@ -28,14 +28,14 @@ namespace SchedulerAssistant.Data.Data.Requests
 
         public static List<Contact> Get(string key, string filter = "", bool displayRemoved = false)
         {
-            string players = GetData(key, filter);
-            var playerList = JsonConvert.DeserializeObject<List<Contact>>(players);
+            string contacts = GetData(key, filter);
+            var contactList = JsonConvert.DeserializeObject<List<Contact>>(contacts);
             
-            if (playerList == null)
+            if (contactList == null)
             {
                 return new List<Contact>();
             }
-            return FilterRemoved(playerList, displayRemoved);
+            return FilterRemoved(contactList, displayRemoved);
         }
 
         private static string GetData(int key, string filter = "")
@@ -59,39 +59,39 @@ namespace SchedulerAssistant.Data.Data.Requests
             return int.Parse(numberOfRowsDeleted);
         }
 
-        public static Contact? Create(Contact player)
+        public static Contact? Create(Contact contact)
         {
-            string data = JsonConvert.SerializeObject(player);
-            string playerId = RequestHandler.MakeRequest(HttpMethods.POST, tableName, "", "", data);
-            string newPlayer = GetData(playerId);
-            return JsonConvert.DeserializeObject<List<Contact>>(newPlayer)?.First();
+            string data = JsonConvert.SerializeObject(contact);
+            string contactId = RequestHandler.MakeRequest(HttpMethods.POST, tableName, "", "", data);
+            string newContact = GetData(contactId);
+            return JsonConvert.DeserializeObject<List<Contact>>(newContact)?.First();
         }
 
-        public static bool Update(Contact player)
+        public static bool Update(Contact contact)
         {
-            string data = JsonConvert.SerializeObject(player);
-            return RequestHandler.MakeRequest(HttpMethods.PUT, tableName, player.Id, "", data) != "0";
+            string data = JsonConvert.SerializeObject(contact);
+            return RequestHandler.MakeRequest(HttpMethods.PUT, tableName, contact.Id, "", data) != "0";
         }
 
-        public static bool Update(int playerId, string property, string value)
+        public static bool Update(int contactId, string property, string value)
         {
-            var rawPlayer = GetData(playerId);
-            if (rawPlayer == null)
+            var rawContact = GetData(contactId);
+            if (rawContact == null)
             {
                 return false;
             }
-            Contact player = JsonConvert.DeserializeObject<List<Contact>>(rawPlayer)?.First() ?? new Contact();
-            player.SetProperty(property, value);
-            return Update(player);
+            Contact contact = JsonConvert.DeserializeObject<List<Contact>>(rawContact)?.First() ?? new Contact();
+            contact.SetProperty(property, value);
+            return Update(contact);
         }
 
-        private static List<Contact> FilterRemoved(List<Contact> players, bool displayRemoved)
+        private static List<Contact> FilterRemoved(List<Contact> contacts, bool displayRemoved)
         {
-            if (players == null || players.Count == 0 || displayRemoved)
+            if (contacts == null || contacts.Count == 0 || displayRemoved)
             {
-                return players ?? new List<Contact>();
+                return contacts ?? new List<Contact>();
             }
-            return players.Where(p => p.IsRemoved == false).ToList();
+            return contacts.Where(p => p.IsRemoved == false).ToList();
         }
     }
 }

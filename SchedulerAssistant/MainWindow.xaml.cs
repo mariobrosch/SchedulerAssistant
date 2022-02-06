@@ -34,5 +34,14 @@ namespace SchedulerAssistant
             _ = contactForm.ShowDialog();
             Show();
         }
+
+        private void BtnEvents_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Windows.Events eventForm = new();
+            _ = eventForm.ShowDialog();
+            Show();
+
+        }
     }
 }

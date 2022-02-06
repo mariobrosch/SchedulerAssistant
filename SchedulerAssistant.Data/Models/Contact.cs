@@ -36,7 +36,8 @@ namespace SchedulerAssistant.Data.Models
             {
                 ModeramenMember = value ? "1" : "0";
             }
-        } public string? Removed { get; set; }
+        } 
+        public string? Removed { get; set; }
         [JsonIgnore]
         public bool IsRemoved
         {

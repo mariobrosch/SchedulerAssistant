@@ -21,4 +21,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Windows\Events.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
