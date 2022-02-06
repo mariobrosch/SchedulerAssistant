@@ -36,7 +36,7 @@ namespace SchedulerAssistant.Data.Helpers
             {
                 Key = "Language",
                 Value = "Dutch",
-                PossibleValues = "Dutch, English"
+                PossibleValues = "Dutch"
             };
             defaultSettings.Add(languageSetting);
 

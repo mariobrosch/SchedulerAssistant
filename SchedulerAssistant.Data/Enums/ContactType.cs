@@ -4,6 +4,7 @@
     {
         Overige,
         Diaken,
+        BlokOuderling,
         Ouderling,
         Predikant,
         Gebouwenbeheerder

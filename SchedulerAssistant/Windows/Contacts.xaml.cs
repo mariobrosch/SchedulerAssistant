@@ -63,8 +63,10 @@ namespace SchedulerAssistant.Windows
             txtId.Text = "Nieuw";
             txtLastName.Text = "";
             txtEmailaddress.Text = "";
+            lbType.SelectedIndex = 0;
             ChkActiveContact.IsChecked = true;
             BtnRemove.Visibility = Visibility.Hidden;
+            ChkModeramen.IsChecked = false;
         }
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
@@ -93,8 +95,9 @@ namespace SchedulerAssistant.Windows
                 contact.IsEnabled = ChkActiveContact.IsChecked.GetValueOrDefault();
                 contact.Name = txtName.Text;
                 contact.Lastname = txtLastName.Text;
-                contact.Type = myType;
+                contact.Type = myType.ToString();
                 contact.EmailAddress = txtEmailaddress.Text;
+                contact.IsModeramenMember = ChkModeramen.IsChecked.GetValueOrDefault();
                 contact.Abbreviation = txtAbbreviation.Text;
 
                 _ = ContactData.Update(contact);
@@ -105,9 +108,10 @@ namespace SchedulerAssistant.Windows
                 Contact newContact = new()
                 {
                     IsEnabled = ChkActiveContact.IsChecked.GetValueOrDefault(),
+                    IsModeramenMember= ChkModeramen.IsChecked.GetValueOrDefault(),
                     Name = txtName.Text,
                     Lastname = txtLastName.Text,
-                    Type = myType,
+                    Type = myType.ToString(),
                     EmailAddress = txtEmailaddress.Text,
                     Abbreviation = txtAbbreviation.Text,
                     IsRemoved = chkRemovedContact.IsChecked.GetValueOrDefault()
@@ -135,7 +139,8 @@ namespace SchedulerAssistant.Windows
             ChkActiveContact.IsChecked = contact.IsEnabled;
             chkRemovedContact.IsChecked = contact.IsRemoved;
             txtEmailaddress.Text = contact.EmailAddress;
-            lbType.SelectedItem = contact.Type.ToString();
+            lbType.SelectedItem = contact.Type?.ToString();
+            ChkModeramen.IsChecked = contact.IsModeramenMember;
             BtnRemove.Visibility = Visibility.Visible;
         }
 

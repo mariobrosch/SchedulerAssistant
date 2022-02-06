@@ -11,7 +11,7 @@ namespace SchedulerAssistant.Data.Models
         public string? Abbreviation { get; set; }
         public string? EmailAddress { get; set; }
         public string? Enabled { get; set; }
-        public ContactType Type { get; set; }
+        public string? Type { get; set; }
         [JsonIgnore]
         public bool IsEnabled
         {
@@ -24,7 +24,19 @@ namespace SchedulerAssistant.Data.Models
                 Enabled = value ? "1" : "0";
             }
         }
-        public string? Removed { get; set; }
+        public string? ModeramenMember { get; set; }
+        [JsonIgnore]
+        public bool IsModeramenMember
+        {
+            get
+            {
+                return ModeramenMember == "1";
+            }
+            set
+            {
+                ModeramenMember = value ? "1" : "0";
+            }
+        } public string? Removed { get; set; }
         [JsonIgnore]
         public bool IsRemoved
         {
