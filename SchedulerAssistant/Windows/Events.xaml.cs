@@ -21,10 +21,10 @@ namespace SchedulerAssistant.Windows
             LoadBoxes();
         }
 
-        private List<Event> events;
-        private List<int> invitedContacts;
-        private List<string> invitedContactTypes;
-        private List<Contact> allContacts;
+        private List<Event>? events;
+        private List<int>? invitedContacts;
+        private List<string>? invitedContactTypes;
+        private List<Contact>? allContacts;
 
         private void LoadBoxes()
         {
@@ -154,11 +154,16 @@ namespace SchedulerAssistant.Windows
 
         private string GetInvitedContacts(List<int>? invitedContacts)
         {
+            if (invitedContacts == null)
+            {
+                return string.Empty;
+            }
+
             var returnValue = new List<string>();
 
             foreach(var contact in invitedContacts)
             {
-                returnValue.Add(allContacts.First(c => c.Id == contact)?.DisplayValue ?? "unknown");
+                returnValue.Add(allContacts?.First(c => c.Id == contact)?.DisplayValue ?? "unknown");
             }
 
             return String.Join(", ", returnValue);

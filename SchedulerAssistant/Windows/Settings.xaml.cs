@@ -12,7 +12,7 @@ namespace SchedulerAssistant.Windows
     /// </summary>
     public partial class Settings : Window
     {
-        private List<Setting> settings;
+        private List<Setting>? settings;
         public Settings()
         {
             InitializeComponent();

@@ -21,7 +21,7 @@ namespace SchedulerAssistant.Windows
             LoadBoxes();
         }
         
-        private List<Contact> contacts;
+        private List<Contact>? contacts;
 
         private void LoadBoxes()
         {
